@@ -13,7 +13,7 @@ import {
 
 const devMode = (process.env as any).NODE_ENV === "development";
 const isProduction = !devMode;
-const outputPath = resolve(process.cwd(), isProduction ? "../../docs" : "dist");
+const outputPath = resolve(process.cwd(), isProduction ? "./docs" : "dist");
 const SERVER = process.env.SERVER || "localhost";
 const publicPath = isProduction
   ? "https://erikvullings.github.io/spritesheet-generator/"
@@ -51,7 +51,7 @@ const configuration: Configuration = {
       publicPath,
       scriptLoading: "defer",
       minify: !devMode,
-      favicon: isProduction ? "favicon.ico" : "./src/favicon.ico",
+      favicon: "./src/favicon.ico",
       meta: {
         charset: "UTF-8",
         viewport: "width=device-width, initial-scale=1",
