@@ -78,6 +78,7 @@ h2 {
 }
 
 .form-group input[type="text"],
+.form-group input[type="number"],
 .form-group select {
   flex: 1;
   padding: 8px;
