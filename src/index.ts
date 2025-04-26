@@ -50,7 +50,7 @@ const drawSpritesheet = (state: State): void => {
   if (!state.canvas || state.sortedImages.length === 0) return;
 
   const padding = 2;
-  let totalWidth = 0;
+  let totalWidth = padding;
   let maxHeight = 0;
 
   state.sortedImages.forEach((img) => {
@@ -66,12 +66,12 @@ const drawSpritesheet = (state: State): void => {
 
   ctx.clearRect(0, 0, state.canvas.width, state.canvas.height);
 
-  let currentX = 0;
+  let currentX = padding;
   state.sortedImages.forEach((img, index) => {
-    const startX = currentX + padding;
+    const startX = currentX;
     state.sortedImages[index].startX = startX;
     ctx.drawImage(img.img, startX, 0, img.width, img.height);
-    currentX += img.width + 2 * padding;
+    currentX += img.width + padding;
   });
 
   const format =
