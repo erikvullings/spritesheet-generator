@@ -73,6 +73,7 @@ const drawSpritesheet = (state: State): void => {
     ctx.drawImage(img.img, startX, 0, img.width, img.height);
     currentX += img.width + padding;
   });
+  console.log(`Total width: ${totalWidth}, current X: ${currentX}.`);
 
   const format =
     state.exportFormat === "webp" && state.canvas.width > 16383
