@@ -8,12 +8,13 @@
     "build": "rspack build"
   },
   "dependencies": {
-    "mithril": "^2.2.15"
+    "mithril": "^2.3.0"
   },
   "devDependencies": {
+    "@rspack/cli": "^1.3.10",
+    "@rspack/core": "^1.3.10",
     "@types/mithril": "^2.2.7",
-    "@rspack/cli": "^1.3.0",
-    "@rspack/core": "^1.3.0",
-    "typescript": "^5.8.2"
+    "@types/node": "^22.15.18",
+    "typescript": "^5.8.3"
   }
 }

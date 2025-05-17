@@ -7,6 +7,7 @@ import {
   HotModuleReplacementPlugin,
   SwcJsMinimizerRspackPlugin,
   LightningCssMinimizerRspackPlugin,
+  SourceMapDevToolPlugin,
 } from "@rspack/core";
 
 // config();
@@ -41,6 +42,10 @@ const configuration: Configuration = {
     port: APP_PORT,
   },
   plugins: [
+    new SourceMapDevToolPlugin({
+      test: /\.ts$/,
+      filename: "[file].map[query]",
+    }),
     new DefinePlugin({
       "process.env.SERVER": isProduction
         ? `'${publicPath}'`
@@ -69,13 +74,11 @@ const configuration: Configuration = {
     new HotModuleReplacementPlugin(),
     new LightningCssMinimizerRspackPlugin(),
     new SwcJsMinimizerRspackPlugin({
-      minimizerOptions: devMode
-        ? {}
-        : {
-            compress: true,
-            minify: true,
-            // mangle: true,
-          },
+      minimizerOptions: {
+        compress: isProduction,
+        minify: isProduction,
+        mangle: isProduction,
+      },
     }),
   ],
   resolve: {
@@ -88,7 +91,6 @@ const configuration: Configuration = {
         exclude: [/node_modules/],
         loader: "builtin:swc-loader",
         options: {
-          sourceMap: true,
           jsc: {
             parser: {
               syntax: "typescript",
